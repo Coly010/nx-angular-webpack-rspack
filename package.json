@@ -2,7 +2,11 @@
   "name": "@nx-angular-webpack-rspack/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "benchmark": "npm run benchmark-wp && npm run benchmark-rs",
+    "benchmark-rs": "hyperfine --prepare 'npx nx reset --onlyCache' --warmup 3 'npx nx run myapp:build-rs --skip-nx-cache'",
+    "benchmark-wp": "hyperfine --prepare 'npx nx reset --onlyCache' --warmup 3 'npx nx run myapp:build --skip-nx-cache'"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
